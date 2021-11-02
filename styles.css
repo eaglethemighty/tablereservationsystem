@@ -6,4 +6,17 @@ html {
     padding: 0;
 
     box-sizing: inherit;
-  }
+}
+
+#initial_panel{
+    display:flex;
+}
+
+#peoplepicker{
+    flex-basis: 50%;
+}
+
+
+#datepicker{
+    flex-basis: 50%;
+}

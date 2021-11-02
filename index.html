@@ -9,9 +9,33 @@
 
         <title> </title>
         <link rel="stylesheet" href="styles.css">
+            <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
+<!--  reservation -->
+    <div id="initial_panel">
+        <div id="datepicker">
+            <label for="start">Choose a date:</label>
+            <input type="date" id="start" name="trip-start" value="2021-11-05" min="2021-11-05" max="2022-01-01" placeholder="dd-mm-yyyy">
+        </div>
 
+        <div id="peoplepicker">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Number of guests: </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li> 2 guests </li>
+                    <li> 3 guests </li>
+                    <li> 4 guests </li>
+                </ul>
+            </div>
+        </div>
+    <div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- /reservation -->
     </body>
     
 </html>
