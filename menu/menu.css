@@ -1,5 +1,18 @@
-.nav-tabs .nav-link.active {
-    background-color: #9400d3;
-    color: #fff;
-    border: 3px solid #9400d3;
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.menu-item {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    height: 75px;
+    width: 75px;
 }
