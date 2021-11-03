@@ -1,6 +1,15 @@
+:root{
+    --number_of_tiles: 3;
+}
+
 html {
     box-sizing: border-box;
 }
+
+body{
+    min-width: 100vw;
+}
+
 *, *:before, *:after {
     margin: 0;
     padding: 0;
@@ -9,14 +18,59 @@ html {
 }
 
 #initial_panel{
-    display:flex;
+    display: flex;
+    flex-direction: column;
 }
 
-#peoplepicker{
+#basic_info{
+    display: flex;
+}
+
+#date_picker{
     flex-basis: 50%;
 }
 
-
-#datepicker{
+#people_picker{
     flex-basis: 50%;
+}
+
+#time_picker{
+    flex-basis: 50%;
+    flex-grow: 0;
+}
+
+@media (max-width: 767px) {
+    /* .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    } */
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(10%);
+    }
+    
+    .carousel-inner .carousel-item-start.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-10%);
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+  transform: translateX(0);
 }
