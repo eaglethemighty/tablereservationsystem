@@ -9,7 +9,7 @@ fetch("../footer/footer.html")
     .then(response => response.text())
     .then(data => document.getElementById('footer').innerHTML = data);
 
-fetch("../reservation/initial-panel.html")
+fetch("initial-panel.html")
     .then(response => response.text())
     .then(data => initialPanel.innerHTML = data)
     .then(() => this.loadInitialPanel());
@@ -19,7 +19,6 @@ function renderTableList() {
         .then(response => response.text())
         .then(data => tablePanel.innerHTML = data);
 }
-
 function renderTableDetail() {
     fetch("../reservation/table-detail.html")
         .then(response => response.text())
