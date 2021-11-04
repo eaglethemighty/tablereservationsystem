@@ -54,26 +54,26 @@
                 <small class="lh-lg">Seats: 2<br />Size: small<br />Shape: bar<br />High chairs: yes<br />Window: no</small>
             </div>
             <hr />
-                <form>
+                <form class="need">
                     <div>
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" style="width: 4.5rem;">Name</span>
-                            <input type="text" class="form-control" placeholder="John">
+                            <input type="text" class="form-control" placeholder="John" required>
                         </div>
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" style="width: 4.5rem;">Surname</span>
-                            <input type="text" class="form-control" placeholder="Smith">
+                            <input type="text" class="form-control" placeholder="Smith"  required>
                         </div>
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" style="width: 4.5rem;">Email</span>
-                            <input type="email" class="form-control" placeholder="john.smith@example.com">
+                            <input type="email" class="form-control" placeholder="john.smith@example.com" required>
                         </div>
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" style="width: 4.5rem;">Phone</span>
-                            <input type="tel" class="form-control" placeholder="123456789" pattern="[0-9]{9}">
+                            <input type="tel" class="form-control" placeholder="123456789" pattern="[0-9]{9}" required>
                         </div>
-                        <select class="form-select form-select-sm mb-3">
-                            <option selected>Choose duration...</option>
+                        <select class="form-select form-select-sm mb-3" required>
+                            <option disabled selected value>Choose duration...</option>
                             <option value="1">60 minutes</option>
                             <option value="2">90 minutes</option>
                             <option value="3">120 minutes</option>
