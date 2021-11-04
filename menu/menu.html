@@ -9,15 +9,198 @@
     <meta name="szviewport" content="width=device-width, initial-scale=1.0">
 
     <title>Café Java | Menu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="menu.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="menu.js"></script>
 </head>
 
 <body>
     <header></header>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container mt-2">
+        <ul class="nav nav-bars justify-content-center">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#starters">Starters</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#fish">Fish</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#vegetarian">Vegetarian</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#desserts">Desserts</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#meat">Meat</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="starters">
+                <div class="row border rounded shadow-sm">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="p-3">
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Home made soup of the day</h5>
+                                    <h6>Made from fresh local producte, served with warm bread rolls</h6>
+                                    <p>Price: 4,15zł</p>
+                                </div>
+                                <img class="img" src="../assets/soup.jpg" alt="soup" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Warm goat's cheese on French bread</h5>
+                                    <h6>Served with cracked black pepper & basil leaves</h6>
+                                    <p>Price: 5,15zł</p>
+                                </div>
+                                <img class="img" src="../assets/warmgoat.jpg" alt="warmgoat" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Baby plum tomatoes and mozzarella</h5>
+                                    <h6>Served with cracked black pepper & basil leaves</h6>
+                                    <p>Price: 5,50zł</p>
+                                </div>
+                                <img class="img" src="../assets/babyplum.jpg" alt="babyplum" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="fish">
+                <div class="row border rounded shadow-sm">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="p-3">
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Fish & chips</h5>
+                                    <h6>Check with your waiter for the fish of the day</h6>
+                                    <p>Price: 13,75zł</p>
+                                </div>
+                                <img class="img" src="../assets/fishandchips.jpg" alt="fishandchips" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Crispy skin sea bass</h5>
+                                    <h6>Served with flaked almonds and savoury cous cous, finished with lemon and herb butter sauce</h6>
+                                    <p>Price: 15,50zł</p>
+                                </div>
+                                <img class="img" src="../assets/crispyskin.jpg" alt="crispyskin" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Salmon steak and tiger prawns</h5>
+                                    <h6>Grilled salmon steak and sauteed tiger prawns in garlic and cajun spices</h6>
+                                    <p>Price: 16,95zł</p>
+                                </div>
+                                <img class="img" src="../assets/salmonsteak.jpg" alt="salmonsteak" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="vegetarian">
+                <div class="row border rounded shadow-sm">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="p-3">
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Stir fried egg noodles</h5>
+                                    <h6>Served with fine vegetable ragout, drizzled with soya sauce</h6>
+                                    <p>Price: 11,75zł</p>
+                                </div>
+                                <img class="img" src="../assets/stirfried.jpg" alt="stirfried" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Mediterranean vegetables</h5>
+                                    <h6>Roast Mediterranean vegetables on a bed savoury basmati rice</h6>
+                                    <p>Price: 11,95zł</p>
+                                </div>
+                                <img class="img" src="../assets/mediterraneanveggies.jpg" alt="mediterraneanveggies" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Porcini ravioli</h5>
+                                    <h6>Pasta envelopes filled with porcini mushrooms, served with basil pesto and extra virgin olive oil</h6>
+                                    <p>Price: 13,25zł</p>
+                                </div>
+                                <img class="img" src="../assets/porciniravioli.jpg" alt="porciniravioli" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="desserts">
+                <div class="row border rounded shadow-sm">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="p-3">
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Gateau of the day</h5>
+                                    <h6>Please ask the waiter for today's choices</h6>
+                                    <p>Price: 4,15zł</p>
+                                </div>
+                                <img class="img" src="../assets/gateau.jpg" alt="gateau" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Greek yoghurt dessert</h5>
+                                    <h6>Strained Greek yoghurt with honey and wainuts drizzled with raspberry coulis</h6>
+                                    <p>Price: 5,45zł</p>
+                                </div>
+                                <img class="img" src="../assets/yogurtdessert.jpg" alt="yogurtdessert" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Trio of assorted ice cream</h5>
+                                    <h6>Please ask your waiter or waitress for the selection available today</h6>
+                                    <p>Price: 4,35zł</p>
+                                </div>
+                                <img class="img" src="../assets/trioicecream.jpg" alt="trioicecream" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="meat">
+                <div class="row border rounded shadow-sm">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="p-3">
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Medallion of pork tenderloin</h5>
+                                    <h6>Topped with caramelised apples, finished with sage jus</h6>
+                                    <p>Price: 12,95zł</p>
+                                </div>
+                                <img class="img" src="../assets/medallions.jpg" alt="medallions" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Grilled rib eye steak</h5>
+                                    <h6>With a creamy red wine and green peppercorn sauce, served with potato rosti</h6>
+                                    <p>Price: 16,50zł</p>
+                                </div>
+                                <img class="img" src="../assets/steak.jpg" alt="steak" />
+                            </div>
+                            <div class="menu-item grow">
+                                <div>
+                                    <h5>Trio of double boned lamb cutlets</h5>
+                                    <h6>Served with mint gravy</h6>
+                                    <p>Price: 16,50zł</p>
+                                </div>
+                                <img class="img" src="../assets/triolamb.jpg" alt="triolamb" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
