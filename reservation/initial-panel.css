@@ -22,10 +22,6 @@ body{
     display: flex;
 }
 
-#date_picker{
-    flex-basis: 50%;
-}
-
 #people_picker{
     flex-basis: 50%;
 }
