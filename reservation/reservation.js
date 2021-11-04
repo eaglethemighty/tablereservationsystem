@@ -1,8 +1,6 @@
 let initialPanel = document.getElementById('initial-panel');
 let tablePanel = document.getElementById('table-panel');
 
-initialPanel.onload = test();
-
 fetch("../header/header.html")
     .then(response => response.text())
     .then(data => document.getElementById('header').innerHTML = data);
