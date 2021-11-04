@@ -18,17 +18,17 @@
 <body>
     <header></header>
 
-    <div id="initial_panel">
-        <div id="basic_info">
-            <div id="datepicker" class="p-5">
-                <label for="start">Choose a date:</label>
-                <input type="date" id="start" name="trip-start" value="2021-11-05" min="2021-11-05" max="2022-01-01" placeholder="dd-mm-yyyy">
+    <div id="initial_panel" class="d-flex flex-column">
+        <div id="basic_info" class="d-flex flex-lg-row flex-column justify-items-center">
+            <div id="date_picker" class="p-5 bg-light flex-grow-1 flex-shrink-1 d-flex justify-content-center">
+                <label for="start" class="p-1">Choose a date:</label>
+                <input type="date" id="start" class="p-1" name="trip-start" value="2021-11-05" min="2021-11-05" max="2022-01-01" placeholder="dd-mm-yyyy">
             </div>
       
-            <div id="peoplepicker" class=" p-5">
+            <div id="people_picker" class="p-5 bg-light flex-grow-1 flex-shrink-1 d-flex justify-content-center">
                 <div class="dropdown">
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Number of guests</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="">
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li> <button class="dropdown-item" type="button"> 1 guest  </button> </li>
                         <li> <button class="dropdown-item" type="button"> 2 guests </button> </li>
                         <li> <button class="dropdown-item" type="button"> 3 guests </button> </li>
@@ -39,7 +39,7 @@
             </div>
         </div>
         
-        <div id="time_picker">
+        <div id="time_picker" class="flex-shrink-1 flex-grow-1">
             <div class="container text-center">
                 <div class="row mx-auto my-auto justify-content-center">
                     <div id="time_carousel" class="carousel carousel-dark" data-bs-ride="carousel" data-bs-interval="false" keyboard="false"> 

@@ -13,28 +13,6 @@ body{
     box-sizing: inherit;
 }
 
-#initial_panel{
-    display: flex;
-    flex-direction: column;
-}
-
-#basic_info{
-    display: flex;
-}
-
-#date_picker{
-    flex-basis: 50%;
-}
-
-#people_picker{
-    flex-basis: 50%;
-}
-
-#time_picker{
-    flex-basis: 50%;
-    flex-grow: 1;
-}
-
 @media (max-width: 767px) {
     /* .carousel-inner .carousel-item > div {
         display: none;
