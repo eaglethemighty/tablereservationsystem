@@ -1,5 +1,5 @@
 .menu-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
 }
 
 .grow {
@@ -12,7 +12,7 @@
     justify-content: space-between;
 }
 
-img {
-    height: 75px;
-    width: 75px;
+.img {
+    height: 5.5rem;
+    width: 5.5rem;
 }
