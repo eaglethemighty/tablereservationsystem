@@ -34,7 +34,7 @@ function loadInitialPanel() {
     let carousel_items = document.querySelectorAll('.carousel .carousel-item')
 
     carousel_items.forEach((el) => {
-        const minPerSlide = 10;
+        const minPerSlide = 12;
         let next = el.nextElementSibling
         for (var i = 1; i < minPerSlide; i++) {
             if (!next) {
