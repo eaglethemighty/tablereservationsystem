@@ -15,131 +15,132 @@
 </head>
 
 <body>
-    <div id="basic_info" class="d-flex flex-lg-row flex-column justify-items-center mt-5">
-        <div id="date_picker" class="p-5 bg-light flex-grow-1 flex-shrink-1 d-flex justify-content-center">
-            <label for="start" class="p-3 bg-white border border-2">Choose a date:</label>
-            <input type="date" id="start" class="p-1 border border-2" name="trip-start" value="2021-11-05" min="2021-11-05" max="2022-01-01" placeholder="dd-mm-yyyy">
+    <div id="basic_info" class="d-flex flex-lg-row flex-column mt-5 justify-content-center">
+        <div id="date_picker" class="py-5 bg-light d-flex flex-fill justify-content-start" style="padding-left: 28%;">
+            <label for="start" class="py-3 pe-3">Choose a date:</label>
+            <input type="date" id="start" class="px-3 border border-2" name="trip-start" value="2021-11-05" min="2021-11-05" max="2022-01-01" placeholder="dd-mm-yyyy">
         </div>
 
-        <div id="people_picker" class="p-5 bg-light flex-grow-1 flex-shrink-1 d-flex justify-content-center">
+        <div id="people_picker" class="py-5 bg-light flex-fill d-flex justify-content-end" style="padding-right: 28%;">
             <div class="dropdown">
-                <button class="btn btn-light bg-white dropdown-toggle p-3  border border-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Number of guests</button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="">
-                    <li> <button class="dropdown-item" type="button"> 1 guest  </button> </li>
-                    <li> <button class="dropdown-item" type="button"> 2 guests </button> </li>
-                    <li> <button class="dropdown-item" type="button"> 3 guests </button> </li>
-                    <li> <button class="dropdown-item" type="button"> 4 guests </button> </li>
-                    <li> <button class="dropdown-item" type="button"> 5 guests </button> </li>
+                <label for="dropdownMenuButton1" class="p-3">Choose the number of guests:</label>
+                <button class="btn btn-light bg-white dropdown-toggle border border-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 0 </button>
+                <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
+                    <li> <button class="dropdown-item" type="button"> 1 </button> </li>
+                    <li> <button class="dropdown-item" type="button"> 2 </button> </li>
+                    <li> <button class="dropdown-item" type="button"> 3 </button> </li>
+                    <li> <button class="dropdown-item" type="button"> 4 </button> </li>
+                    <li> <button class="dropdown-item" type="button"> 5 </button> </li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div id="time_picker" class="flex-shrink-1 flex-grow-1  bg-light">
+    <div id="time_picker" class="flex-shrink-1 flex-grow-0 bg-light pb-5">
         <div class="container text-center">
-            <div class="row mx-auto my-auto justify-content-center">
-                <div id="time_carousel" class="carousel carousel-dark" data-bs-ride="carousel" data-bs-interval="false" keyboard="false"> 
-                    <div class="carousel-inner" role="listbox">
+            <div class="row mx-auto justify-content-center">
+                <div id="time_carousel" class="carousel carousel-dark" data-bs-ride="carousel" data-bs-interval="false" keyboard="false" style="width: 65%;"> 
+                    <div class="carousel-inner list-group-item" role="listbox">
                         <div class="carousel-item active">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>10:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">10:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>10:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">10:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>11:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">11:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>11:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">11:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>12:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">12:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>12:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">12:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>13:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">13:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>13:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">13:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>14:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">14:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>14:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">14:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>15:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">15:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>15:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">15:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>16:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">16:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>16:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">16:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>17:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">17:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>17:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">17:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>18:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">18:00</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>18:30</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">18:30</p> </button>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="col m-1">
-                                <button class="btn btn-light btn-lg" onclick="renderTableList();"> <p>19:00</p> </button>
+                                <button class="btn btn-light btn-lg border border-secondary" onclick="renderTableList();" style="align-items: center;"> <p class="my-2">19:00</p> </button>
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev bg-primary bg-opacity-100 opacity-100" href="#time_carousel" role="button" data-bs-slide="prev">
+                    <a class="carousel-control-prev bg-body border border-secondary bg-opacity-100 opacity-100 rounded-start" href="#time_carousel" role="button" data-bs-slide="prev" style="width: 5%;">
                         <span class="carousel-control-prev-icon" aria-hidden="false"></span>
                     </a>
-                    <a class="carousel-control-next bg-primary bg-opacity-100 opacity-100" href="#time_carousel" role="button" data-bs-slide="next">
+                    <a class="carousel-control-next bg-body border border-secondary bg-opacity-100 opacity-100 rounded-end" href="#time_carousel" role="button" data-bs-slide="next" style="width: 5%;">
                         <span class="carousel-control-next-icon" aria-hidden="false"></span>
                     </a>
                 </div>

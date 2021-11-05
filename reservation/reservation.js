@@ -17,7 +17,8 @@ fetch("initial-panel.html")
 function renderTableList() {
     fetch("../reservation/table-list.html")
         .then(response => response.text())
-        .then(data => tablePanel.innerHTML = data);
+        .then(data => tablePanel.innerHTML = data)
+        .then(() => this.loadTableList());
 }
 function renderTableDetail() {
     fetch("../reservation/table-detail.html")
@@ -47,6 +48,10 @@ function loadInitialPanel() {
     })
 }
 
+function loadTableList() {
+    window.scroll(0, findPos(document.getElementById("table-list-start"))-150);
+}
+
 function loadTableDetail() {
     'use strict'
 
@@ -65,4 +70,16 @@ function loadTableDetail() {
                 form.classList.add('was-validated')
             }, false)
         })
+
+    window.scroll(0, findPos(document.getElementById("table-detail-start"))-150);
+}
+
+function findPos(obj) {
+    var curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curtop += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+        return [curtop];
+    }
 }
