@@ -1,5 +1,6 @@
 let initialPanel = document.getElementById('initial-panel');
 let tablePanel = document.getElementById('table-panel');
+var first = true;
 
 fetch("../header/header.html")
     .then(response => response.text())
@@ -49,7 +50,8 @@ function loadInitialPanel() {
 }
 
 function loadTableList() {
-    window.scroll(0, findPos(document.getElementById("table-list-start"))-150);
+    var margin = convertRemToPixels(1);
+    window.scroll(0, getYPos(document.getElementById("table-list-start")) - getHeaderHeight() - margin);
 }
 
 function loadTableDetail() {
@@ -71,15 +73,22 @@ function loadTableDetail() {
             }, false)
         })
 
-    window.scroll(0, findPos(document.getElementById("table-detail-start"))-150);
+    var margin = convertRemToPixels(1);
+    window.scroll(0, getYPos(document.getElementById("table-detail-start")) - getHeaderHeight() - margin);
 }
 
-function findPos(obj) {
-    var curtop = 0;
-    if (obj.offsetParent) {
-        do {
-            curtop += obj.offsetTop;
-        } while (obj = obj.offsetParent);
-        return [curtop];
-    }
+function getYPos(obj) {
+    var bodyRect = document.body.getBoundingClientRect(),
+        elemRect = obj.getBoundingClientRect(),
+        offset = elemRect.top - bodyRect.top;
+
+    return [offset];
+}
+
+function getHeaderHeight() {
+    return [document.getElementById('top-navbar').offsetHeight];
+}
+
+function convertRemToPixels(rem) {
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }

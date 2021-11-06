@@ -2,10 +2,6 @@ html {
     box-sizing: border-box;
 }
 
-body{
-    min-width: 100vw;
-}
-
 *, *:before, *:after {
     margin: 0;
     padding: 0;
