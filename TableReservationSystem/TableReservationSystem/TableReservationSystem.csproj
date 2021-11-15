@@ -46,11 +46,14 @@
     <None Include="wwwroot\js\contact.js" />
     <None Include="wwwroot\js\menu.js" />
     <None Include="wwwroot\js\reservation.js" />
-    <None Include="wwwroot\js\welcome.js" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
 </Project>
