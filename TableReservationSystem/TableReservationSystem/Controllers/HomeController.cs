@@ -5,6 +5,7 @@ using TableReservationSystem.Models;
 
 namespace TableReservationSystem.Controllers
 {
+    [Route("")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -14,11 +15,27 @@ namespace TableReservationSystem.Controllers
             _logger = logger;
         }
 
+        [Route("")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Route("Menu")]
+        public IActionResult Menu()
+        {
+            return View();
+        }
+
+        [Route("Reservation")]
+        public IActionResult Reservation()
+        [Route("Contact")]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [Route("Error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
