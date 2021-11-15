@@ -1,6 +1,45 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Contact Us";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+@section Styles {
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+}
+
+<main id="welcome" class="flex-shrink-0 flex-grow-1">
+
+    <div class="mx-2 my-4">
+        <h1 class="display-4 text-center mb-3" style="font-family: 'Special Elite', cursive;">Contact Us</h1>
+        <div class="mx-auto d-flex justify-content-center flex-row flex-wrap" style="column-gap: 6rem; row-gap: 2rem">
+            <div>
+                <img class="img-fluid" src="~/assets/map.png" alt="map" />
+            </div>
+            <div class="lead my-auto">
+                <p>
+                    Caf&eacute; Java
+                    <br />Czerwone Maki 82
+                    <br />30-392 Krakow
+                    <br />cafejava@gmail.com
+                    <br />+48 123 456 789
+                </p>
+                <p class="text-wrap">
+                    Phone reservations only for parties,
+                    <br class="media-break" />otherwise please head to <a class="text-muted" href="../reservation/reservation.html" style="text-decoration: none;">Reservations</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<style>
+    .media-break {
+        display: none;
+    }
+
+    @@media (min-width: 337px) {
+        .media-break {
+            display: inline
+        }
+    }
+</style>
