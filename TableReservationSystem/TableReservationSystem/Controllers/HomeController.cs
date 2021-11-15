@@ -27,8 +27,6 @@ namespace TableReservationSystem.Controllers
             return View();
         }
 
-        [Route("Reservation")]
-        public IActionResult Reservation()
         [Route("Contact")]
         public IActionResult Contact()
         {
