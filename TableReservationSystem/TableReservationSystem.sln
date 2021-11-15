@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableReservationSystem", "TableReservationSystem\TableReservationSystem.csproj", "{939430EF-6EBA-4B53-BB11-B3DFB80C7934}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{939430EF-6EBA-4B53-BB11-B3DFB80C7934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939430EF-6EBA-4B53-BB11-B3DFB80C7934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939430EF-6EBA-4B53-BB11-B3DFB80C7934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939430EF-6EBA-4B53-BB11-B3DFB80C7934}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8C85517-B962-41E0-973D-C7E535F4030C}
+	EndGlobalSection
+EndGlobal
