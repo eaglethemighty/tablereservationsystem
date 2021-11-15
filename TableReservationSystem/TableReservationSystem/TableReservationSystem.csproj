@@ -4,4 +4,53 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\assets\babyplum.jpg" />
+    <None Include="wwwroot\assets\crispyskin.jpg" />
+    <None Include="wwwroot\assets\exterior.png" />
+    <None Include="wwwroot\assets\fishandchips.jpg" />
+    <None Include="wwwroot\assets\gateau.jpg" />
+    <None Include="wwwroot\assets\interior.png" />
+    <None Include="wwwroot\assets\layout.png" />
+    <None Include="wwwroot\assets\layout_numbered.png" />
+    <None Include="wwwroot\assets\logo.png" />
+    <None Include="wwwroot\assets\logo_male.png" />
+    <None Include="wwwroot\assets\map.png" />
+    <None Include="wwwroot\assets\medallions.jpg" />
+    <None Include="wwwroot\assets\mediterraneanveggies.jpg" />
+    <None Include="wwwroot\assets\menu_expand.svg" />
+    <None Include="wwwroot\assets\porciniravioli.jpg" />
+    <None Include="wwwroot\assets\salmonsteak.jpg" />
+    <None Include="wwwroot\assets\soup.jpg" />
+    <None Include="wwwroot\assets\steak.jpg" />
+    <None Include="wwwroot\assets\stirfried.jpg" />
+    <None Include="wwwroot\assets\trioicecream.jpg" />
+    <None Include="wwwroot\assets\triolamb.jpg" />
+    <None Include="wwwroot\assets\warmgoat.jpg" />
+    <None Include="wwwroot\assets\yogurtdessert.jpg" />
+    <None Include="wwwroot\css\header.css" />
+    <None Include="wwwroot\css\initial-panel.css" />
+    <None Include="wwwroot\css\menu.css" />
+    <None Include="wwwroot\documentation\DatabaseDiagram.drawio" />
+    <None Include="wwwroot\documentation\Reservation.png" />
+    <None Include="wwwroot\documentation\Welcome.png" />
+    <None Include="wwwroot\html\contact.html" />
+    <None Include="wwwroot\html\footer.html" />
+    <None Include="wwwroot\html\header.html" />
+    <None Include="wwwroot\html\initial-panel.html" />
+    <None Include="wwwroot\html\menu.html" />
+    <None Include="wwwroot\html\reservation.html" />
+    <None Include="wwwroot\html\table-detail.html" />
+    <None Include="wwwroot\html\table-list.html" />
+    <None Include="wwwroot\html\welcome.html" />
+    <None Include="wwwroot\js\contact.js" />
+    <None Include="wwwroot\js\menu.js" />
+    <None Include="wwwroot\js\reservation.js" />
+    <None Include="wwwroot\js\welcome.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
 </Project>
