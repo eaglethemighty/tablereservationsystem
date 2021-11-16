@@ -1,0 +1,22 @@
+ViewModel -> tables & ReservationsDTO & currentReservation
+
+//GET
+Index
+load ViewModel from db
+
+//GET
+LoadTables
+when you select date, people, hour which loads table selection
+returns partialview showing table list for use in tables section
+
+//GET
+LoadReservation
+returns partialview showing resevation/table details for use in tables section
+
+CheckTableAvailable(datetime, poepl)
+iterate over all tables for above conditions, return true/false
+this is probably in view
+
+//POST
+Create
+add currentReservation to DB (binding data to model) and reload page or display message saying thnaqk you or soemthing
