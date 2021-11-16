@@ -1,17 +1,24 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace TableReservationSystem.Models
 {
     public class ReservationDTO
     {
-        public Table Table { get; set; }
+        public ReservationDTO(Reservation reservation)
+        {
+            Id = reservation.Id;
+            TableID = (int)reservation.TableID;
+            Date = reservation.Date;
+            Duration = reservation.Duration;
+        }
+
+        public int Id { get; set; }
+        public int TableID { get; set; }
 
         [DataType(DataType.DateTime)]
-        [Required]
         public DateTime Date { get; set; }
 
-        [Required]
         public Duration Duration { get; set; }
     }
 }
