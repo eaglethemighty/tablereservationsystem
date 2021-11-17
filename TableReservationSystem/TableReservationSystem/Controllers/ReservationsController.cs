@@ -24,7 +24,7 @@ namespace TableReservationSystem.Controllers
         // GET: Reservations index page
         public IActionResult Index()
         {
-            ReservationsIndexViewModel model = new() { Reservation = new(), Seats = 5 };
+            ReservationsIndexViewModel model = new() { Reservation = new(), Seats = 1 };
             return View(model);
         }
 
