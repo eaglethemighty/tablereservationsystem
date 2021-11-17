@@ -60,15 +60,15 @@ namespace TableReservationSystem.Controllers
 
             var viewModel = new ReservationsTableListViewModel { Tables = tables };
 
-            return PartialView("_TableDetail", viewModel);
+            return PartialView("_TableList", viewModel);
         }
 
-        public IActionResult LoadReservation(int tableId, DateTime date)
+        public IActionResult LoadReservation([FromBody] AjaxData ajaxData)
         {
-            var table = GetTable(tableId);
-            var tableDetails = new ReservationsTableDetailViewModel() { Table = table, Reservation = new() { Date = date} };
+            var table = GetTable(ajaxData.Number);
+            var tableDetails = new ReservationsTableDetailViewModel() { Table = table, Reservation = new() { Date = ajaxData.DateTime } };
 
-            return View(tableDetails);
+            return PartialView("_TableDetail", tableDetails);
         }
 
         // GET: Reservations/Details/5
