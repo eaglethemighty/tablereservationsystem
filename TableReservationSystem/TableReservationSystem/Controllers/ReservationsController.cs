@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TableReservationSystem.Data;
@@ -63,12 +63,12 @@ namespace TableReservationSystem.Controllers
             return PartialView("_TableList", viewModel);
         }
 
-        public IActionResult LoadReservation([FromBody] AjaxData ajaxData)
+        public async Task<IActionResult> LoadReservation([FromBody] AjaxData ajaxData)
         {
             var table = GetTable(ajaxData.Number);
             var tableDetails = new ReservationsTableDetailViewModel() { Table = table, Reservation = new() { Date = ajaxData.DateTime } };
 
-            return PartialView("_TableDetail", tableDetails);
+            return await Task.FromResult(PartialView("_TableDetail", tableDetails));
         }
 
         // GET: Reservations/Details/5
@@ -119,9 +119,9 @@ namespace TableReservationSystem.Controllers
             return _context.Table.FirstOrDefault(e => e.Id == id);
         }
 
-        public Task<IActionResult> LoadTablesDetails([FromBody] TableDetails details)
+        public Task<IActionResult> LoadTablesDetails([FromBody] AjaxData details)
         {
-            return await LoadReservation(details.TableID, details.Date);
+            return LoadReservation(details);
         }
     }
 }
