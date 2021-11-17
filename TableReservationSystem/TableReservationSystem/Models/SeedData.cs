@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using TableReservationSystem.Data;
 using System;
 using System.Linq;
+using TableReservationSystem.Data;
 
 namespace TableReservationSystem.Models
 {
@@ -21,7 +21,7 @@ namespace TableReservationSystem.Models
             context.Table.AddRange(
                 new Table
                 {
-                    Id = 1,
+                    //1,
                     Seats = 2,
                     Size = Size.Small,
                     Shape = Shape.Wall,
@@ -30,7 +30,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 2,
+                    //2,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Wall,
@@ -39,7 +39,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 3,
+                    //3,
                     Seats = 5,
                     Size = Size.Medium,
                     Shape = Shape.Entrance,
@@ -48,7 +48,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 4,
+                    //4,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Entrance,
@@ -57,7 +57,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 5,
+                    //5,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Wall,
@@ -66,7 +66,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 6,
+                    //6,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Wall,
@@ -75,7 +75,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 7,
+                    //7,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Wall,
@@ -84,7 +84,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 8,
+                    //8,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Middle,
@@ -93,7 +93,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 9,
+                    //9,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Middle,
@@ -102,7 +102,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 10,
+                    //10,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Middle,
@@ -111,16 +111,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 11,
-                    Seats = 4,
-                    Size = Size.Medium,
-                    Shape = Shape.Wall,
-                    HighChair = true,
-                    Window = false
-                },
-                new Table
-                {
-                    Id = 12,
+                    //11,
                     Seats = 4,
                     Size = Size.Medium,
                     Shape = Shape.Wall,
@@ -129,7 +120,16 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 14,
+                    //12,
+                    Seats = 4,
+                    Size = Size.Medium,
+                    Shape = Shape.Wall,
+                    HighChair = true,
+                    Window = false
+                },
+                new Table
+                {
+                    //14,
                     Seats = 2,
                     Size = Size.Small,
                     Shape = Shape.Middle,
@@ -138,7 +138,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 15,
+                    //15,
                     Seats = 2,
                     Size = Size.Small,
                     Shape = Shape.Middle,
@@ -147,7 +147,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 16,
+                    //16,
                     Seats = 2,
                     Size = Size.Small,
                     Shape = Shape.Middle,
@@ -156,7 +156,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 17,
+                    //17,
                     Seats = 2,
                     Size = Size.Small,
                     Shape = Shape.Middle,
@@ -165,7 +165,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 18,
+                    //18,
                     Seats = 2,
                     Size = Size.Small,
                     Shape = Shape.Middle,
@@ -174,7 +174,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 19,
+                    //19,
                     Seats = 2,
                     Size = Size.Small,
                     Shape = Shape.Middle,
@@ -183,7 +183,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 20,
+                    //20,
                     Seats = 12,
                     Size = Size.Large,
                     Shape = Shape.Wall,
@@ -192,7 +192,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 21,
+                    //21,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -201,7 +201,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 22,
+                    //22,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -210,7 +210,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 23,
+                    //23,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -219,7 +219,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 24,
+                    //24,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -228,7 +228,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 25,
+                    //25,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -237,7 +237,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 26,
+                    //26,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -246,7 +246,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 27,
+                    //27,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -255,7 +255,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 28,
+                    //28,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -264,7 +264,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 29,
+                    //29,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -273,7 +273,7 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 30,
+                    //30,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -282,7 +282,6 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 31,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
@@ -291,7 +290,6 @@ namespace TableReservationSystem.Models
                 },
                 new Table
                 {
-                    Id = 32,
                     Seats = 1,
                     Size = Size.Small,
                     Shape = Shape.Bar,
