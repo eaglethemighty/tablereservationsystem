@@ -1,52 +1,81 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TableReservationSystem.Data;
 using TableReservationSystem.Models;
+using TableReservationSystem.Repositories;
 
 namespace TableReservationSystem.Controllers
 {
     public class ReservationsController : Controller
     {
-        private readonly TableReservationSystemContext _context;
+        private readonly IReservationRepository _reservationRepository;
+        private readonly ITableRepository _tableRepository;
 
-        public ReservationsController(TableReservationSystemContext context)
+        public ReservationsController(IReservationRepository reservationRepository, ITableRepository tableRepository)
         {
-            _context = context;
+            _reservationRepository = reservationRepository;
+            _tableRepository = tableRepository;   
         }
 
-        // GET: Reservations
-        public async Task<IActionResult> Index()
+        // GET: Reservations index page
+        public IActionResult Index()
         {
-            var tableReservationSystemContext = _context.Reservation.Include(r => r.Table);
-            return View(await tableReservationSystemContext.ToListAsync());
+            return View();
         }
 
-        // GET: Reservations/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET
+        public IActionResult LoadTables([FromBody] AjaxData ajaxData)
         {
-            if (id == null)
+            var tablesdb = _tableRepository.GetAllTable();
+            var reservationdb = _reservationRepository.GetAllReservation();
+            List<ReservationDTO> reservations = new();
+            List<TableExtended> tables = new();
+
+            if (reservationdb != null)
             {
-                return NotFound();
+                foreach (var reservation in reservationdb)
+                {
+                    reservations.Add(new(reservation));
+                }
+            }
+            if (tablesdb != null)
+            {
+                foreach (var table in tablesdb)
+                {
+                    tables.Add(new(table));
+                }
             }
 
-            var reservation = await _context.Reservation
-                .Include(r => r.Table)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (reservation == null)
+            var tablesOccupiedOnDay = reservations.Where(r => r.Date - ajaxData.DateTime <= TimeSpan.FromMinutes(180)).Select(t => t.TableID);
+
+            foreach(var table in tables)
             {
-                return NotFound();
+                if (tablesOccupiedOnDay.Contains(table.Table.Id) || table.Table.Seats < ajaxData.Number)
+                {
+                    table.Available = false;
+                }
             }
 
-            return View(reservation);
+            var viewModel = new ReservationsTableListViewModel { Tables = tables };
+
+            return PartialView("_TableList", viewModel);
+        }
+
+        public IActionResult LoadReservation([FromBody] AjaxData ajaxData)
+        {
+            var table = GetTable(ajaxData.Number);
+            var tableDetails = new ReservationsTableDetailViewModel() { Table = table, Reservation = new() { Date = ajaxData.DateTime } };
+
+            return PartialView("_TableDetail", tableDetails);
         }
 
         // GET: Reservations/Create
         public IActionResult Create()
         {
-            ViewData["TableID"] = new SelectList(_context.Table, "Id", "Id");
+            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id");
             return View();
         }
 
@@ -55,104 +84,20 @@ namespace TableReservationSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation reservation)
+        public IActionResult Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] ReservationsTableDetailViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reservation);
-                await _context.SaveChangesAsync();
+                _reservationRepository.Create(viewModel.Reservation);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TableID"] = new SelectList(_context.Table, "Id", "Id", reservation.TableID);
-            return View(reservation);
+            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", viewModel.Reservation.TableID);
+            return View(viewModel);
         }
 
-        // GET: Reservations/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        private Table GetTable(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reservation = await _context.Reservation.FindAsync(id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-            ViewData["TableID"] = new SelectList(_context.Table, "Id", "Id", reservation.TableID);
-            return View(reservation);
-        }
-
-        // POST: Reservations/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation reservation)
-        {
-            if (id != reservation.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(reservation);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ReservationExists(reservation.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["TableID"] = new SelectList(_context.Table, "Id", "Id", reservation.TableID);
-            return View(reservation);
-        }
-
-        // GET: Reservations/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reservation = await _context.Reservation
-                .Include(r => r.Table)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-
-            return View(reservation);
-        }
-
-        // POST: Reservations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var reservation = await _context.Reservation.FindAsync(id);
-            _context.Reservation.Remove(reservation);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ReservationExists(int id)
-        {
-            return _context.Reservation.Any(e => e.Id == id);
+            return _tableRepository.GetAllTable().FirstOrDefault(e => e.Id == id);
         }
     }
 }
