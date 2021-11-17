@@ -29,7 +29,7 @@
 
             var data = {
                 DateTime: new Date(@Model.Reservation.Date.Year, @Model.Reservation.Date.Month, @Model.Reservation.Date.Day, @Model.Reservation.Date.Hour, @Model.Reservation.Date.Minute),
-                Number: event.target                
+                Number: $(this).attr('name')
             };
 
             $.ajax({
