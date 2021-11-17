@@ -1,0 +1,139 @@
+﻿@model ReservationsIndexViewModel
+
+@{
+}
+
+<div id="initial-panel" class="bg-light">
+    <div id="basic_info" class="d-flex flex-wrap justify-content-center p-3" style="row-gap: 1.5rem; column-gap:15%">
+
+        <div id="date_picker" class="d-inline-flex flex-wrap justify-content-center align-items-center mx-2" style="column-gap: 0.5rem; row-gap: 0.5rem;">
+            <label class="text-center" for="date-select">Choose a date:</label>
+            <input asp-for="Reservation.Date" type="date" id="date-select" class="form-control" name="trip-start" value="@DateTime.Today.ToString("yyyy-MM-dd")" min="@DateTime.Today.ToString("yyyy-MM-dd")" max="@DateTime.Today.AddDays(90).ToString("yyyy-MM-dd")" placeholder="dd-mm-yyyy" style="width:10rem">
+        </div>
+
+        <div id="people_picker" class="d-inline-flex flex-wrap justify-content-center align-items-center mx-2" style="column-gap: 0.5rem; row-gap: 0.5rem;">
+            <label class="text-center" for="people-select">Choose guests:</label>
+            <select asp-for="Seats" id="people-select" class="form-select" required style="width:10rem">
+                <option disabled selected value="">Choose...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="time_picker" class="d-flex justify-content-center mx-auto pb-3">
+        <div id="time_carousel" class="carousel carousel-dark text-center mx-3 d-flex col-10 col-sm-9 col-md-8 col-lg-7 col-xl-6" data-bs-ride="carousel" data-bs-interval="false" keyboard="false">
+            <div>
+                <a class="carousel-control-prev bg-body border border-secondary opacity-100 rounded-end btn btn-outline-secondary" href="#time_carousel" role="button" data-bs-slide="prev" style="width: 5%;">
+                    <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                </a>
+            </div>
+            <div class="carousel-inner list-group-item" role="listbox">
+                <div class="carousel-item active">
+                    <div class="col m-1">
+                        <button name="10:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">10:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="10:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">10:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="11:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">11:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="11:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">11:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="12:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">12:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="12:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">12:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="13:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">13:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="13:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">13:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="14:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">14:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="14:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">14:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="15:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">15:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="15:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">15:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="16:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">16:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="16:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">16:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="17:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">17:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="17:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">17:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="18:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">18:00</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="18:30" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">18:30</p> </button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col m-1">
+                        <button name="19:00" class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">19:00</p> </button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a class="carousel-control-next bg-body border border-secondary opacity-100 rounded-end btn btn-outline-secondary" href="#time_carousel" role="button" data-bs-slide="next" style="width: 5%;">
+                    <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
