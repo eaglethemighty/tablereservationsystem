@@ -7,6 +7,8 @@
     string Shape = Model.Table.Shape.ToString();
     string HighChair = Model.Table.HighChair? "yes" : "no";
     string Window = Model.Table.Window ? "yes" : "no";
+
+    // Bind("TableID,Date,Name,Surname,Email,Phone,Duration")]
 }
 
 
@@ -19,35 +21,37 @@
         </div>
         <hr />
 
-        <form class="needs-validation" novalidate>
+        <form action="Create" method="post" class="needs-validation" novalidate>
             <div>
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" style="width: 4.5rem;">Name</span>
-                    <input type="text" class="form-control" placeholder="John" maxlength="15" required>
+                    <input name="Name" type="text" class="form-control" placeholder="John" maxlength="15" required>
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" style="width: 4.5rem;">Surname</span>
-                    <input type="text" class="form-control" placeholder="Smith" maxlength="15" required>
+                    <input name="Surname" type="text" class="form-control" placeholder="Smith" maxlength="15" required>
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" style="width: 4.5rem;">Email</span>
-                    <input type="email" class="form-control" placeholder="john.smith@example.com" required>
+                    <input name="Email" type="email" class="form-control" placeholder="john.smith@example.com" required>
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" style="width: 4.5rem;">Phone</span>
-                    <input type="tel" class="form-control" placeholder="123456789" pattern="[0-9]{9}" required>
+                    <input name="Phone" type="tel" class="form-control" placeholder="123456789" pattern="[0-9]{9}" required>
 
                     <div class="invalid-feedback">
                         Invalid phone number. Example: 123456789
                     </div>
                 </div>
-                <select class="form-select form-select-sm mb-3" required>
+                <select name="Duration" class="form-select form-select-sm mb-3" required>
                     <option disabled selected value="5">Choose duration...</option>
                     <option value="0">60 minutes</option>
                     <option value="1">90 minutes</option>
                     <option value="2">120 minutes</option>
                     <option value="3">180 minutes</option>
                 </select>
+                <input type="text" name="TableID" value="@Model.Table.Id" class="invisible">
+                <input type="text" name="Date" value="@Model.Reservation.Date" class="invisible">
             </div>
             <button onclick="renderTableList();" type="button" class="btn btn-outline-secondary btn-sm" style="width: 4.5rem;">Back</button>
             <button type="submit" class="btn btn-outline-primary btn-sm float-end" style="width: 4.5rem;">Submit</button>
