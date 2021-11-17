@@ -1,13 +1,12 @@
 ﻿@model ReservationsTableDetailViewModel
 
 @{
-    Table Table = new();
-    string TableNumber = Table.Id.ToString();
-    string Seats = Table.Seats.ToString();
-    string Size = Table.Size.ToString();
-    string Shape = Table.Shape.ToString();
-    string HighChair = Table.HighChair? "yes" : "no";
-    string Window = Table.Window ? "yes" : "no";
+    string TableNumber = Model.Table.Id.ToString();
+    string Seats = Model.Table.Seats.ToString();
+    string Size = Model.Table.Size.ToString();
+    string Shape = Model.Table.Shape.ToString();
+    string HighChair = Model.Table.HighChair? "yes" : "no";
+    string Window = Model.Table.Window ? "yes" : "no";
 }
 
 
