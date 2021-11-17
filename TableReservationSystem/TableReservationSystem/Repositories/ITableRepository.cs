@@ -3,9 +3,8 @@ using TableReservationSystem.Models;
 
 namespace TableReservationSystem.Repositories
 {
-    public interface IReservationRepository
+    public interface ITableRepository
     {
-        void Create(Reservation reservation);
-        List<Reservation> GetAllReservation();
+        List<Table> GetAllTable();
     }
 }
