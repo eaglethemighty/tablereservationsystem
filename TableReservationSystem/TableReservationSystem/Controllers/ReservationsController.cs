@@ -49,7 +49,7 @@ namespace TableReservationSystem.Controllers
                 }
             }
 
-            var tablesOccupiedOnDay = reservations.Where(r => r.Date - ajaxData.DateTime <= TimeSpan.FromMinutes(180)).Select(t => t.TableID);
+            var tablesOccupiedOnDay = reservations.Where(r => Math.Abs(Convert.ToDecimal(r.Date - ajaxData.DateTime)) <= 180).Select(t => t.TableID);
 
             foreach(var table in tables)
             {
