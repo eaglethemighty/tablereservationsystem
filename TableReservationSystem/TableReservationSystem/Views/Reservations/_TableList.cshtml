@@ -4,17 +4,17 @@
     <div id="table-list-start" class="align-self-end text-left list-group overflow-auto" style="width: 16rem; max-height: 34rem">
         @foreach (var table in Model.Tables)
         {
-            string OccupiedDetails = table.Available ? "occupied" : "free";
+            string OccupiedDetails = table.Available ? "available" : "occupied";
             string TableNumber = table.Table.Id.ToString();
             string Seats = table.Table.Seats.ToString();
 
             if (table.Available)
             {
-                <button type="button" name="@TableNumber" class="list-group-item list-group-item-action" disabled>@TableNumber. @OccupiedDetails table: seats @Seats</button>
+                <button type="button" name="@TableNumber" class="list-group-item list-group-item-action">@TableNumber. @OccupiedDetails table: seats @Seats</button>
             }
             else
             {
-                <button type="button" name="@TableNumber" class="list-group-item list-group-item-action">@TableNumber. @OccupiedDetails table: seats @Seats</button>
+                <button type="button" name="@TableNumber" class="list-group-item list-group-item-action" disabled>@TableNumber. @OccupiedDetails table: seats @Seats</button>
             }
         }
     </div>
