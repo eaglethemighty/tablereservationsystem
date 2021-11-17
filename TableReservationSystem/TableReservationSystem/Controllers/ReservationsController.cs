@@ -71,25 +71,6 @@ namespace TableReservationSystem.Controllers
             return PartialView("_TableDetail", tableDetails);
         }
 
-        // GET: Reservations/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reservation = await _context.Reservation
-                .Include(r => r.Table)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-
-            return View(reservation);
-        }
-
         // GET: Reservations/Create
         public IActionResult Create()
         {
@@ -102,16 +83,16 @@ namespace TableReservationSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation reservation)
+        public async Task<IActionResult> Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] ReservationsTableDetailViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reservation);
+                _context.Add(viewModel.Reservation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TableID"] = new SelectList(_context.Table, "Id", "Id", reservation.TableID);
-            return View(reservation);
+            ViewData["TableID"] = new SelectList(_context.Table, "Id", "Id", viewModel.Reservation.TableID);
+            return View(viewModel);
         }
 
         private Table GetTable(int id)
