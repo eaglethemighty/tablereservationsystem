@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +29,7 @@ namespace TableReservationSystem.Controllers
         // GET
         public IActionResult LoadTables([FromBody] AjaxData ajaxData)
         {
-            var tablesdb = _tableRepository.GetAllReservation();
+            var tablesdb = _tableRepository.GetAllTable();
             var reservationdb = _reservationRepository.GetAllReservation();
             List<ReservationDTO> reservations = new();
             List<TableExtended> tables = new();
@@ -76,7 +75,7 @@ namespace TableReservationSystem.Controllers
         // GET: Reservations/Create
         public IActionResult Create()
         {
-            ViewData["TableID"] = new SelectList(_tableRepository, "Id", "Id");
+            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id");
             return View();
         }
 
@@ -92,13 +91,13 @@ namespace TableReservationSystem.Controllers
                 _reservationRepository.Create(viewModel.Reservation);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TableID"] = new SelectList(_tableRepository, "Id", "Id", viewModel.Reservation.TableID);
+            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", viewModel.Reservation.TableID);
             return View(viewModel);
         }
 
         private Table GetTable(int id)
         {
-            return _tableRepository.FirstOrDefault(e => e.Id == id);
+            return _tableRepository.GetAllTable().FirstOrDefault(e => e.Id == id);
         }
     }
 }
