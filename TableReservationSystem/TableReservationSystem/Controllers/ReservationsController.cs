@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TableReservationSystem.Models;
 using TableReservationSystem.Repositories;
 
@@ -23,7 +24,8 @@ namespace TableReservationSystem.Controllers
         // GET: Reservations index page
         public IActionResult Index()
         {
-            return View();
+            ReservationsIndexViewModel model = new() { Reservation = new(), Seats = 5 };
+            return View(model);
         }
 
         // GET
@@ -59,7 +61,7 @@ namespace TableReservationSystem.Controllers
                 }
             }
 
-            var viewModel = new ReservationsTableListViewModel { Tables = tables };
+            var viewModel = new ReservationsTableListViewModel { Tables = tables, Reservation = new Reservation { Date = ajaxData.DateTime} };
 
             return PartialView("_TableList", viewModel);
         }
@@ -84,14 +86,14 @@ namespace TableReservationSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] ReservationsTableDetailViewModel viewModel)
+        public IActionResult Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation viewModel)
         {
             if (ModelState.IsValid)
             {
-                _reservationRepository.Create(viewModel.Reservation);
+                _reservationRepository.Create(viewModel);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", viewModel.Reservation.TableID);
+            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", viewModel.TableID);
             return View(viewModel);
         }
 

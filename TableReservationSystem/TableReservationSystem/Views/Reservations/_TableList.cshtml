@@ -27,21 +27,6 @@
 <script>
     $("#table-list button").click(loadTableDetail);
     function loadTableDetail() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
 
         var data = {
             DateTime: new Date(@Model.Reservation.Date.Year, @Model.Reservation.Date.Month, @Model.Reservation.Date.Day, @Model.Reservation.Date.Hour, @Model.Reservation.Date.Minute),
