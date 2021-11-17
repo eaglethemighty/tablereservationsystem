@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 using TableReservationSystem.Data;
 using TableReservationSystem.Models;
 
@@ -117,6 +117,11 @@ namespace TableReservationSystem.Controllers
         private Table GetTable(int id)
         {
             return _context.Table.FirstOrDefault(e => e.Id == id);
+        }
+
+        public Task<IActionResult> LoadTablesDetails([FromBody] TableDetails details)
+        {
+            return await LoadReservation(details.TableID, details.Date);
         }
     }
 }

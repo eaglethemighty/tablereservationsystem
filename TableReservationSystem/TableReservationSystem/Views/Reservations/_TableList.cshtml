@@ -1,8 +1,6 @@
 ﻿@model ReservationsTableListViewModel
 
-
 <div id="table-list" class="d-flex flex-wrap-reverse flex-row justify-content-center mx-2 mt-4 mb-4" style="column-gap: 1rem; row-gap: 1.5rem;">
-
     <div id="table-list-start" class="align-self-end text-left list-group overflow-auto" style="width: 16rem; max-height: 34rem">
         @foreach (var table in Model.Tables)
         {
@@ -12,11 +10,11 @@
 
             if (table.Available)
             {
-                <button type="button" asp-controller="Reservation" asp-action="ShowTableDetails" class="list-group-item list-group-item-action" disabled>@TableNumber. @OccupiedDetails table: seats @Seats</button>
+                <button type="button" name="@TableNumber" class="list-group-item list-group-item-action" disabled>@TableNumber. @OccupiedDetails table: seats @Seats</button>
             }
             else
             {
-                <button type="button" asp-controller="Reservation" asp-action="ShowTableDetails" class="list-group-item list-group-item-action">@TableNumber. @OccupiedDetails table: seats @Seats</button>
+                <button type="button" name="@TableNumber" class="list-group-item list-group-item-action">@TableNumber. @OccupiedDetails table: seats @Seats</button>
             }
         }
     </div>
@@ -24,5 +22,34 @@
     <div class="align-self-center">
         <img class="img-fluid" src="../assets/layout_numbered.png" style="width: 16rem;" alt="layout" />
     </div>
-
 </div>
+
+<script>
+        $("#time_picker button").click(function (event) {
+
+            var data = {
+                Date: new Date(@Model.Reservation.Date.Year, @Model.Reservation.Date.Month, @Model.Reservation.Date.Day, @Model.Reservation.Date.Hour, @Model.Reservation.Date.Minute),
+                TableID: event.target                
+            };
+
+            $.ajax({
+                url: '@Url.Action("LoadTablesDetails", "Reservations")',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "HTML",
+                data: JSON.stringify(data),
+                dataType: "html",
+                success: function (response) {
+                    $("#table-detail").html(response);
+                },
+                failure: function (response) {
+                    alert("test");
+                },
+                error: function (response) {
+                    alert("test2");
+                }
+            })
+        });
+</script>

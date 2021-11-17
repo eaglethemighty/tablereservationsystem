@@ -1,0 +1,62 @@
+﻿@model ReservationsTableDetailViewModel
+
+@{
+    Table Table = new();
+    string TableNumber = Table.Id.ToString();
+    string Seats = Table.Seats.ToString();
+    string Size = Table.Size.ToString();
+    string Shape = Table.Shape.ToString();
+    string HighChair = Table.HighChair? "yes" : "no";
+    string Window = Table.Window ? "yes" : "no";
+}
+
+
+<div id="table-detail" class="d-flex flex-wrap-reverse flex-row justify-content-center mx-2 mt-4 mb-4" style="column-gap: 1rem; row-gap: 1.5rem;">
+
+    <div id="table-detail-start" class="text-left" style="width: 16rem; max-height: 34rem">
+        <div>
+            <p class="fs-4 mb-1">Table #@TableNumber</p>
+            <small class="lh-lg">Seats: @Seats<br />Size: @Size<br />Shape: @Shape<br />High chair: @HighChair<br />Window: @Window</small>
+        </div>
+        <hr />
+
+        <form class="needs-validation" novalidate>
+            <div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" style="width: 4.5rem;">Name</span>
+                    <input type="text" class="form-control" placeholder="John" maxlength="15" required>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" style="width: 4.5rem;">Surname</span>
+                    <input type="text" class="form-control" placeholder="Smith" maxlength="15" required>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" style="width: 4.5rem;">Email</span>
+                    <input type="email" class="form-control" placeholder="john.smith@example.com" required>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" style="width: 4.5rem;">Phone</span>
+                    <input type="tel" class="form-control" placeholder="123456789" pattern="[0-9]{9}" required>
+
+                    <div class="invalid-feedback">
+                        Invalid phone number. Example: 123456789
+                    </div>
+                </div>
+                <select class="form-select form-select-sm mb-3" required>
+                    <option disabled selected value="5">Choose duration...</option>
+                    <option value="0">60 minutes</option>
+                    <option value="1">90 minutes</option>
+                    <option value="2">120 minutes</option>
+                    <option value="3">180 minutes</option>
+                </select>
+            </div>
+            <button onclick="renderTableList();" type="button" class="btn btn-outline-secondary btn-sm" style="width: 4.5rem;">Back</button>
+            <button type="submit" class="btn btn-outline-primary btn-sm float-end" style="width: 4.5rem;">Submit</button>
+        </form>
+    </div>
+
+    <div class="align-self-center">
+        <img class="img-fluid" src="../assets/layout_numbered.png" style="width: 16rem;" alt="layout" />
+    </div>
+
+</div >
