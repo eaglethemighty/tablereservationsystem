@@ -1,71 +1,188 @@
-﻿@model IEnumerable<TableReservationSystem.Models.Reservation>
+﻿@model ReservationsIndexViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Reservation";
+    Model.Reservation.Date = DateTime.Now;
+    Model.Seats = 4;
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Table)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duration)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Table.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+@section Styles {
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/initial-panel.css" />
 }
-    </tbody>
-</table>
+
+<main id="reservation" class="flex-shrink-0 flex-grow-1">
+
+    <h1 class="display-4 text-center mt-4" style="font-family: 'Special Elite', cursive;">Reservations</h1>
+
+    <div id="initial-panel" class="bg-light">
+        <div id="basic_info" class="d-flex flex-wrap justify-content-center p-3" style="row-gap: 1.5rem; column-gap:15%">
+
+            <div id="date_picker" class="d-inline-flex flex-wrap justify-content-center align-items-center mx-2" style="column-gap: 0.5rem; row-gap: 0.5rem;">
+                <label class="text-center" for="date-select">Choose a date:</label>
+                <input type="date" id="date-select" class="form-control" name="trip-start" value="2021-11-05" min="2021-11-05" max="2022-01-01" placeholder="dd-mm-yyyy" style="width:10rem">
+            </div>
+
+            <div id="people_picker" class="d-inline-flex flex-wrap justify-content-center align-items-center mx-2" style="column-gap: 0.5rem; row-gap: 0.5rem;">
+                <label class="text-center" for="people-select">Choose guests:</label>
+                <select id="people-select" class="form-select" required style="width:10rem">
+                    <option disabled selected value="">Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="time_picker" class="d-flex justify-content-center mx-auto pb-3">
+            <div id="time_carousel" class="carousel carousel-dark text-center mx-3 d-flex col-10 col-sm-9 col-md-8 col-lg-7 col-xl-6" data-bs-ride="carousel" data-bs-interval="false" keyboard="false">
+                <div>
+                    <a class="carousel-control-prev bg-body border border-secondary opacity-100 rounded-end btn btn-outline-secondary" href="#time_carousel" role="button" data-bs-slide="prev" style="width: 5%;">
+                        <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                    </a>
+                </div>
+                <div class="carousel-inner list-group-item" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">10:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">10:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">11:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">11:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">12:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">12:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">13:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">13:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">14:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">14:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">15:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">15:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">16:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">16:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">17:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">17:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">18:00</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">18:30</p> </button>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            <button class="btn btn-light btn-lg border border-secondary" style="align-items: center;"> <p class="my-2">19:00</p> </button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a class="carousel-control-next bg-body border border-secondary opacity-100 rounded-end btn btn-outline-secondary" href="#time_carousel" role="button" data-bs-slide="next" style="width: 5%;">
+                        <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="table-panel">
+    </div>
+
+</main>
+
+@section Scripts {
+    <script src="~/js/reservation.js"></script>
+    <script>
+        $("#time_picker button").click(function () {
+            var data = {
+                Date: new Date(@Model.Reservation.Date.Year, @Model.Reservation.Date.Month, @Model.Reservation.Date.Day, @Model.Reservation.Date.Hour, @Model.Reservation.Date.Minute, @Model.Reservation.Date.Second),
+                Seats: @Model.Seats
+            };
+
+            $.ajax({
+                url: '@Url.Action("LoadTables", "Reservations")',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "HTML",
+                data: JSON.stringify(data),
+                dataType: "html",
+                success: function (response) {
+                    $("#table-panel").html(response);
+                },
+                failure: function (response) {
+                    alert("AJAX Failure " + response);
+                },
+                error: function (response) {
+                    alert("AJAX Error " + response);
+                }
+            })
+        });
+    </script>
+}

@@ -1,36 +1,7 @@
 let initialPanel = document.getElementById('initial-panel');
 let tablePanel = document.getElementById('table-panel');
 var first = true;
-
-fetch("../header/header.html")
-    .then(response => response.text())
-    .then(data => document.getElementById('header').innerHTML = data);
-
-fetch("../footer/footer.html")
-    .then(response => response.text())
-    .then(data => document.getElementById('footer').innerHTML = data);
-
-fetch("initial-panel.html")
-    .then(response => response.text())
-    .then(data => initialPanel.innerHTML = data)
-    .then(() => this.loadInitialPanel());
-
-function renderTableList() {
-    fetch("../reservation/table-list.html")
-        .then(response => response.text())
-        .then(data => tablePanel.innerHTML = data)
-        .then(() => this.loadTableList());
-}
-function renderTableDetail() {
-    fetch("../reservation/table-detail.html")
-        .then(response => response.text())
-        .then(data => tablePanel.innerHTML = data)
-        .then(() => this.loadTableDetail());
-}
-
-function ClickLink(href) {
-    location.href = href;
-}
+loadInitialPanel();
 
 function loadInitialPanel() {
     let carousel_items = document.querySelectorAll('.carousel .carousel-item')
