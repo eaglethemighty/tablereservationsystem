@@ -25,31 +25,52 @@
 </div>
 
 <script>
-        $("#table-list button").click(function (event) {
+    $("#table-list button").click(loadTableDetail);
+    function loadTableDetail() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
 
-            var data = {
-                DateTime: new Date(@Model.Reservation.Date.Year, @Model.Reservation.Date.Month, @Model.Reservation.Date.Day, @Model.Reservation.Date.Hour, @Model.Reservation.Date.Minute),
-                Number: $(this).attr('name')
-            };
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-            $.ajax({
-                url: '@Url.Action("LoadTablesDetails", "Reservations")',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                type: "HTML",
-                data: JSON.stringify(data),
-                dataType: "html",
-                success: function (response) {
-                    $("#table-detail").html(response);
-                },
-                failure: function (response) {
-                    alert("test");
-                },
-                error: function (response) {
-                    alert("test2");
-                }
+                    form.classList.add('was-validated')
+                }, false)
             })
-        });
+
+        var data = {
+            DateTime: new Date(@Model.Reservation.Date.Year, @Model.Reservation.Date.Month, @Model.Reservation.Date.Day, @Model.Reservation.Date.Hour, @Model.Reservation.Date.Minute),
+            Number: $(this).attr('name')
+        };
+        console.log($(this).attr('name'))
+
+        $.ajax({
+            url: '@Url.Action("LoadTablesDetails", "Reservations")',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "HTML",
+            data: JSON.stringify(data),
+            dataType: "html",
+            success: function (response) {
+                $("#table-panel").html(response);
+            },
+            failure: function (response) {
+                alert("test");
+            },
+            error: function (response) {
+                alert("test2");
+            }
+        })
+
+        var margin = convertRemToPixels(1);
+        window.scroll(0, getYPos(document.getElementById("table-detail-start")) - getHeaderHeight() - margin);
+    }
+
 </script>
