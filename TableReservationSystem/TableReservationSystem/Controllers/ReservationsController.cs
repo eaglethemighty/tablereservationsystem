@@ -73,28 +73,20 @@ namespace TableReservationSystem.Controllers
 
             return await Task.FromResult(PartialView("_TableDetail", tableDetails));
         }
-
-        // GET: Reservations/Create
-        public IActionResult Create()
-        {
-            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id");
-            return View();
-        }
-
         // POST: Reservations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation viewModel)
+        public IActionResult Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
-                _reservationRepository.Create(viewModel);
+                _reservationRepository.Create(reservation);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", viewModel.TableID);
-            return View(viewModel);
+            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", reservation.TableID);
+            return View(reservation);
         }
 
         private Table GetTable(int id)
