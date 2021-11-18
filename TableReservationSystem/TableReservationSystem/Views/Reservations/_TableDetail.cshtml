@@ -1,0 +1,117 @@
+﻿@model ReservationsTableDetailViewModel
+
+@{
+    string TableNumber = Model.Table.Id.ToString();
+    string Seats = Model.Table.Seats.ToString();
+    string Size = Model.Table.Size.ToString();
+    string Shape = Model.Table.Shape.ToString();
+    string HighChair = Model.Table.HighChair? "yes" : "no";
+    string Window = Model.Table.Window ? "yes" : "no";
+}
+
+
+<div id="table-detail" class="d-flex flex-wrap-reverse flex-row justify-content-center mx-2 mt-4 mb-4" style="column-gap: 1rem; row-gap: 1.5rem;">
+
+    <div id="table-detail-start" class="text-left" style="width: 16rem; max-height: 34rem">
+        <div>
+            <p class="fs-4 mb-1">Table #@TableNumber</p>
+            <small class="lh-lg">Seats: @Seats<br />Size: @Size<br />Shape: @Shape<br />High chair: @HighChair<br />Window: @Window</small>
+        </div>
+        <hr />
+
+        <form asp-controller="Reservations" asp-action="Create" class="needs-validation" novalidate>
+            <div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" style="width: 4.5rem;">Name</span>
+                    <input asp-for="Reservation.Name" name="Name" type="text" class="form-control" placeholder="John" maxlength="15" required>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" style="width: 4.5rem;">Surname</span>
+                    <input asp-for="Reservation.Surname" name="Surname" type="text" class="form-control" placeholder="Smith" maxlength="15" required>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" style="width: 4.5rem;">Email</span>
+                    <input asp-for="Reservation.Email" name="Email" type="email" class="form-control" placeholder="john.smith@example.com" required>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" style="width: 4.5rem;">Phone</span>
+                    <input asp-for="Reservation.Phone" name="Phone" type="tel" class="form-control" placeholder="123456789" pattern="[0-9]{9}" required>
+
+                    <div class="invalid-feedback">
+                        Invalid phone number. Example: 123456789
+                    </div>
+                </div>
+                <select asp-for="Reservation.Duration" name="Duration" class="form-select form-select-sm mb-3" required>
+                    <option disabled selected value="">Choose duration...</option>
+                    <option value="1">60 minutes</option>
+                    <option value="2">90 minutes</option>
+                    <option value="3">120 minutes</option>
+                    <option value="4">180 minutes</option>
+                </select>
+                <input type="text" asp-for="Reservation.TableID" name="TableID" value="@Model.Table.Id" class="invisible">
+                <input type="text" asp-for="Reservation.Date" name="Date" value="@Model.Reservation.Date" class="invisible">
+            </div>
+            <button id="back_to_list" type="button" class="btn btn-outline-secondary btn-sm" style="width: 4.5rem;">Back</button>
+            <button id="submit_reservation" type="submit" class="btn btn-outline-primary btn-sm float-end" style="width: 4.5rem;">Submit</button>
+        </form>
+    </div>
+
+    <div class="align-self-center">
+        <img class="img-fluid" src="../assets/layout_numbered.png" style="width: 16rem;" alt="layout" />
+    </div>
+
+</div>
+
+<script>
+    $("#submit_reservation").click(ValidateReservationForm);
+    $("#back_to_list").click(loadTableList);
+
+    function ValidateReservationForm() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    }
+
+    function loadTableList() {
+        var seats = $('#people-select').val();
+
+        if (seats == undefined) return;
+
+        var data = {
+            DateTime: new Date(@Model.Reservation.Date.Year, @Model.Reservation.Date.Month, @Model.Reservation.Date.Day, @Model.Reservation.Date.Hour, @Model.Reservation.Date.Minute, 0),
+            Number: seats,
+        };
+
+        $.ajax({
+            url: '@Url.Action("LoadTables", "Reservations")',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "HTML",
+            data: JSON.stringify(data),
+            dataType: "html",
+            success: function (response) {
+                $("#table-panel").html(response);
+            },
+            failure: function (response) {
+                alert("AJAX Failure " + response);
+            },
+            error: function (response) {
+                alert("AJAX Error " + response);
+            }
+        })
+    }
+</script>
