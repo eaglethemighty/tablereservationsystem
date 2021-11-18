@@ -42,11 +42,11 @@
                     </div>
                 </div>
                 <select asp-for="Reservation.Duration" name="Duration" class="form-select form-select-sm mb-3" required>
-                    <option disabled selected value="5">Choose duration...</option>
-                    <option value="0">60 minutes</option>
-                    <option value="1">90 minutes</option>
-                    <option value="2">120 minutes</option>
-                    <option value="3">180 minutes</option>
+                    <option disabled selected value="">Choose duration...</option>
+                    <option value="1">60 minutes</option>
+                    <option value="2">90 minutes</option>
+                    <option value="3">120 minutes</option>
+                    <option value="4">180 minutes</option>
                 </select>
                 <input type="text" asp-for="Reservation.TableID" name="TableID" value="@Model.Table.Id" class="invisible">
                 <input type="text" asp-for="Reservation.Date" name="Date" value="@Model.Reservation.Date" class="invisible">
@@ -65,7 +65,6 @@
 <script>
     $("#submit_reservation").click(ValidateReservationForm);
     $("#back_to_list").click(loadTableList);
-
 
     function ValidateReservationForm() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
