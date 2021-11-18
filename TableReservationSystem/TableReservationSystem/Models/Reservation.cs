@@ -30,6 +30,7 @@ namespace TableReservationSystem.Models
 
         [Required]
         [DataType(DataType.PhoneNumber)]
+        [RegularExpression("[0-9]{9}", ErrorMessage = "Enter 9 digits.")]
         public string Phone { get; set; }
 
         [Required]

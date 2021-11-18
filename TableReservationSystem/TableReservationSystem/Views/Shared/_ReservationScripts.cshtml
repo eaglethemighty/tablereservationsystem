@@ -37,7 +37,7 @@
             Number: seats,
             };
 
-        $.ajax({
+        $.when($.ajax({
             url: '@Url.Action("LoadTables", "Reservations")',
             headers: {
                 'Accept': 'application/json',
@@ -50,15 +50,17 @@
                 $("#table-panel").html(response);
             },
             failure: function (response) {
-                alert("AJAX Failure " + response);
+                console.log("AJAX Failure " + response);
             },
             error: function (response) {
-                alert("AJAX Error " + response);
+                console.log("AJAX Error " + response);
             }
-        })
+        })).then(scrollToList);
+    }
 
+    function scrollToList() {
         var margin = convertRemToPixels(1);
-        window.scroll(0, getYPos(document.getElementById("table-panel")) - getHeaderHeight() - margin);
+        window.scroll(0, getYPos(document.getElementById("table-list-start")) - getHeaderHeight() - margin);
     }
 
     function getYPos(obj) {
