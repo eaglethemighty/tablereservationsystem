@@ -33,13 +33,13 @@
                     <span class="input-group-text" style="width: 4.5rem;">Email</span>
                     <input asp-for="Reservation.Email" name="Email" type="email" class="form-control" placeholder="john.smith@example.com" required>
                 </div>
-                <div class="input-group input-group-sm mb-3 position-relative">
+                <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" style="width: 4.5rem;">Phone</span>
                     <input asp-for="Reservation.Phone" name="Phone" type="tel" class="form-control" placeholder="123456789" pattern="[0-9]{9}" required>
 
-                    <span class="invalid-tooltip">
-                        Enter 9 digits.
-                    </span>
+                    <div class="invalid-feedback">
+                        Invalid phone number. Example: 123456789
+                    </div>
                 </div>
                 <select asp-for="Reservation.Duration" name="Duration" class="form-select form-select-sm mb-3" required>
                     <option disabled selected value="">Choose duration...</option>
@@ -53,6 +53,21 @@
             </div>
             <button id="back_to_list" type="button" class="btn btn-outline-secondary btn-sm" style="width: 4.5rem;">Back</button>
             <button id="submit_reservation" type="submit" class="btn btn-outline-primary btn-sm float-end" style="width: 4.5rem;">Submit</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Great!</h5>
+                        </div>
+                        <div class="modal-body">
+                            You reserved a table!
+                        </div>
+                        <div class="modal-footer">
+                            <button id="back_to_home_page "type="button" class="btn btn-primary">Go Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 
@@ -69,7 +84,6 @@
     function ValidateReservationForm() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation')
-
         // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
@@ -77,10 +91,43 @@
                     if (!form.checkValidity()) {
                         event.preventDefault()
                         event.stopPropagation()
+                    } else {
+                        event.stopPropagation()
+                        $("#exampleModal").modal('show');
                     }
-
                     form.classList.add('was-validated')
                 }, false)
             })
+    }
+
+    function loadTableList() {
+        var seats = $('#people-select').val();
+
+        if (seats == undefined) return;
+
+        var data = {
+            DateTime: new Date(@Model.Reservation.Date.Year, @Model.Reservation.Date.Month, @Model.Reservation.Date.Day, @Model.Reservation.Date.Hour, @Model.Reservation.Date.Minute, 0),
+            Number: seats,
+        };
+
+        $.ajax({
+            url: '@Url.Action("LoadTables", "Reservations")',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "HTML",
+            data: JSON.stringify(data),
+            dataType: "html",
+            success: function (response) {
+                $("#table-panel").html(response);
+            },
+            failure: function (response) {
+                alert("AJAX Failure " + response);
+            },
+            error: function (response) {
+                alert("AJAX Error " + response);
+            }
+        })
     }
 </script>
