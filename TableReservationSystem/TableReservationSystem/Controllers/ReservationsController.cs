@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TableReservationSystem.Models;
 using TableReservationSystem.Repositories;
 
@@ -23,7 +24,8 @@ namespace TableReservationSystem.Controllers
         // GET: Reservations index page
         public IActionResult Index()
         {
-            return View();
+            ReservationsIndexViewModel model = new() { Reservation = new(), Seats = 1 };
+            return View(model);
         }
 
         // GET
@@ -59,45 +61,42 @@ namespace TableReservationSystem.Controllers
                 }
             }
 
-            var viewModel = new ReservationsTableListViewModel { Tables = tables };
+            var viewModel = new ReservationsTableListViewModel { Tables = tables, Reservation = new Reservation { Date = ajaxData.DateTime} };
 
             return PartialView("_TableList", viewModel);
         }
 
-        public IActionResult LoadReservation([FromBody] AjaxData ajaxData)
+        public async Task<IActionResult> LoadReservation([FromBody] AjaxData ajaxData)
         {
             var table = GetTable(ajaxData.Number);
             var tableDetails = new ReservationsTableDetailViewModel() { Table = table, Reservation = new() { Date = ajaxData.DateTime } };
 
-            return PartialView("_TableDetail", tableDetails);
+            return await Task.FromResult(PartialView("_TableDetail", tableDetails));
         }
-
-        // GET: Reservations/Create
-        public IActionResult Create()
-        {
-            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id");
-            return View();
-        }
-
         // POST: Reservations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] ReservationsTableDetailViewModel viewModel)
+        public IActionResult Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
-                _reservationRepository.Create(viewModel.Reservation);
+                _reservationRepository.Create(reservation);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", viewModel.Reservation.TableID);
-            return View(viewModel);
+            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", reservation.TableID);
+            return View(reservation);
         }
 
         private Table GetTable(int id)
         {
             return _tableRepository.GetAllTable().FirstOrDefault(e => e.Id == id);
+        }
+
+        public Task<IActionResult> LoadTablesDetails([FromBody] AjaxData details)
+        {
+            return LoadReservation(details);
         }
     }
 }

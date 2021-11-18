@@ -43,7 +43,6 @@
     <None Include="wwwroot\html\table-detail.html" />
     <None Include="wwwroot\html\table-list.html" />
     <None Include="wwwroot\html\welcome.html" />
-    <None Include="wwwroot\js\reservation.js" />
   </ItemGroup>
 
   <ItemGroup>
