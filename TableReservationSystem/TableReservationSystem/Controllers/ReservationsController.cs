@@ -91,10 +91,5 @@ namespace TableReservationSystem.Controllers
         {
             return _tableRepository.GetAllTable().FirstOrDefault(e => e.Id == id);
         }
-
-        public Task<IActionResult> LoadTablesDetails([FromBody] AjaxData details)
-        {
-            return LoadReservation(details);
-        }
     }
 }
