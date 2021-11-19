@@ -11,6 +11,7 @@ namespace TableReservationSystem.Controllers
 {
     public class ReservationsController : Controller
     {
+        private const int MaxReservationTime = 180;
         private readonly IReservationRepository _reservationRepository;
         private readonly ITableRepository _tableRepository;
 
@@ -28,7 +29,7 @@ namespace TableReservationSystem.Controllers
         }
 
         // GET
-        public IActionResult LoadTables([FromBody] AjaxData ajaxData)
+        public async Task<IActionResult> LoadTables([FromBody] AjaxData ajaxData)
         {
             var tablesdb = _tableRepository.GetAllTable();
             var reservationdb = _reservationRepository.GetAllReservation();
@@ -49,7 +50,7 @@ namespace TableReservationSystem.Controllers
                     tables.Add(new(table));
                 }
             }
-            var tablesOccupiedOnDay = reservations.Where(r => Math.Abs((r.Date - ajaxData.DateTime).TotalMinutes) <= 180).Select(t => t.TableID);
+            var tablesOccupiedOnDay = reservations.Where(r => Math.Abs((r.Date - ajaxData.DateTime).TotalMinutes) <= MaxReservationTime).Select(t => t.TableID);
 
             foreach(var table in tables)
             {
@@ -62,7 +63,7 @@ namespace TableReservationSystem.Controllers
 
             var viewModel = new ReservationsTableListViewModel { Tables = tables, Reservation = new Reservation { Date = ajaxData.DateTime} };
 
-            return PartialView("_TableList", viewModel);
+            return await Task.FromResult(PartialView("_TableList", viewModel));
         }
 
         public async Task<IActionResult> LoadReservation([FromBody] AjaxData ajaxData)
@@ -77,14 +78,14 @@ namespace TableReservationSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation reservation)
+        public async Task<IActionResult> Create([Bind("TableID,Date,Name,Surname,Email,Phone,Duration")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
                 _reservationRepository.Create(reservation);
                 return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+            return await Task.FromResult(RedirectToAction(nameof(Index)));
         }
 
         private Table GetTable(int id)
