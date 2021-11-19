@@ -59,6 +59,7 @@ namespace TableReservationSystem.Controllers
                     table.Available = false;
                 }
             }
+            tables = tables.OrderByDescending(x => x.Available).ThenBy(x => x.Table.Id).ToList();
 
             var viewModel = new ReservationsTableListViewModel { Tables = tables, Reservation = new Reservation { Date = ajaxData.DateTime} };
 
