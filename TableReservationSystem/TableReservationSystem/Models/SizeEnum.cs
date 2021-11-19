@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace TableReservationSystem.Models
 {
     public enum Size
