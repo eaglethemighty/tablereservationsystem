@@ -85,8 +85,7 @@ namespace TableReservationSystem.Controllers
                 _reservationRepository.Create(reservation);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TableID"] = new SelectList(_tableRepository.GetAllTable(), "Id", "Id", reservation.TableID);
-            return View(reservation);
+            return RedirectToAction(nameof(Index));
         }
 
         private Table GetTable(int id)

@@ -17,5 +17,9 @@ namespace TableReservationSystem.Data
         public DbSet<TableReservationSystem.Models.Table> Table { get; set; }
 
         public DbSet<TableReservationSystem.Models.Reservation> Reservation { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
     }
 }
