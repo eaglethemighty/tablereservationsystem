@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,7 +33,7 @@ namespace TableReservationSystem.Controllers
             var tablesdb = _tableRepository.GetAllTable();
             var reservationdb = _reservationRepository.GetAllReservation();
             List<ReservationDTO> reservations = new();
-            List<TableExtended> tables = new();
+            List<TableStatus> tables = new();
 
             if (reservationdb != null)
             {

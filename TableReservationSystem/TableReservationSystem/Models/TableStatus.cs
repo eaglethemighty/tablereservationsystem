@@ -1,8 +1,8 @@
 namespace TableReservationSystem.Models
 {
-    public class TableExtended
+    public class TableStatus
     {
-        public TableExtended(Table table)
+        public TableStatus(Table table)
         {
             Table = table;
             Available = true;

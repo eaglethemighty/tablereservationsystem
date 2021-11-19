@@ -34,15 +34,6 @@
     <None Include="wwwroot\documentation\DatabaseDiagram.drawio" />
     <None Include="wwwroot\documentation\Reservation.png" />
     <None Include="wwwroot\documentation\Welcome.png" />
-    <None Include="wwwroot\html\contact.html" />
-    <None Include="wwwroot\html\footer.html" />
-    <None Include="wwwroot\html\header.html" />
-    <None Include="wwwroot\html\initial-panel.html" />
-    <None Include="wwwroot\html\menu.html" />
-    <None Include="wwwroot\html\reservation.html" />
-    <None Include="wwwroot\html\table-detail.html" />
-    <None Include="wwwroot\html\table-list.html" />
-    <None Include="wwwroot\html\welcome.html" />
   </ItemGroup>
 
   <ItemGroup>
