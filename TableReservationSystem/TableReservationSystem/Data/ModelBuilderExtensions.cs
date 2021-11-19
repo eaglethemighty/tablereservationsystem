@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using TableReservationSystem.Models;
 
-namespace TableReservationSystem.Models
+namespace TableReservationSystem.Data
 {
     public static class ModelBuilderExtensions
     {
